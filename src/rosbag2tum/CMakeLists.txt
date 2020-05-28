@@ -4,6 +4,10 @@ project(bag2tum)
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
 
+#target_link_libraries(PCLutils
+#        ${OpenCV_LIBS}
+#        ${PCL_LIBRARIES}
+#        )
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -15,6 +19,39 @@ find_package(catkin REQUIRED COMPONENTS
   tf
 )
 
+
+
+set(PCL_DIR /usr/lib/x86_64-linux-gnu/cmake/pcl)
+include_directories(
+        # include
+        /usr/lib/x86_64-linux-gnu/cmake/pcl
+)
+include_directories(
+        # include
+        /usr/include/boost
+)
+set(Boost_DEBUG ON)
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+ADD_DEFINITIONS(-DBoost_USE_STATIC_LIBS=ON)
+set(Boost_INCLUDE_DIR /usr/include/)
+set(Boost_LIBRARY_DIR /usr/lib/x86_64-linux-gnu/)
+
+
+find_package(Boost REQUIRED)
+find_package(PCL  REQUIRED)
+find_package(OpenCV 3 REQUIRED)
+find_package(Eigen3 REQUIRED)
+include_directories(${EIGEN3_INCLUDE_DIR})
+include_directories(${PCL_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
+
+#target_link_libraries(
+##        ${PROJECT_NAME}_get_grasps
+##        ${catkin_LIBRARIES}
+#        ${PCL_LIBRARIES})
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 

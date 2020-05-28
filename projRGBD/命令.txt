@@ -1,0 +1,1 @@
+./projDepth /home/da/data/thermal2Kinect.yml /home/da/data/half-extacted/list.txt  /home/da/data/half-extacted/depth /home/da/123
